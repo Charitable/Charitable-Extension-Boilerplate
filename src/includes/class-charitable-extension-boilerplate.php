@@ -7,7 +7,7 @@
  * @package     Charitable Extension Boilerplate
  * @copyright   Copyright (c) 2015, Eric Daams  
  * @license     http://opensource.org/licenses/gpl-1.0.0.php GNU Public License
- * @since       0.1
+ * @since       1.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -17,14 +17,14 @@ if ( ! class_exists( 'Charitable_Extension_Boilerplate' ) ) :
 /**
  * Charitable_Extension_Boilerplate
  *
- * @since   0.1
+ * @since   1.0.0
  */
 class Charitable_Extension_Boilerplate {
 
     /**
      * @var string
      */
-    const VERSION = '0.1';
+    const VERSION = '1.0.0';
 
     /**
      * @var string  A date in the format: YYYYMMDD
@@ -116,7 +116,11 @@ class Charitable_Extension_Boilerplate {
 
         $this->maybe_upgrade();
 
+        $this->maybe_start_admin();        
+
         $this->setup_licensing();
+
+        $this->setup_i18n();
 
         // Hook in here to do something when the plugin is first loaded.
         do_action('charitable_extension_boilerplate_start', $this);
@@ -135,6 +139,22 @@ class Charitable_Extension_Boilerplate {
     }
 
     /**
+     * Load the admin-only functionality. 
+     *
+     * @return  void
+     * @access  private
+     * @since   1.0.0
+     */
+    private function maybe_start_admin() {
+        if ( ! is_admin() ) {
+            return;
+        }
+
+        require_once( $this->get_path( 'includes' ) . 'admin/class-charitable-extension-boilerplate-admin.php' );
+        require_once( $this->get_path( 'includes' ) . 'admin/charitable-extension-boilerplate-admin-hooks.php' );
+    }
+
+    /**
      * Set up licensing for the extension. 
      *
      * @return  void
@@ -148,6 +168,22 @@ class Charitable_Extension_Boilerplate {
             Charitable_Extension_Boilerplate::VERSION,
             $this->plugin_file 
         );
+    }
+
+    /**
+     * Set up the internationalisation for the plugin. 
+     *
+     * @return  void
+     * @access  private
+     * @since   0.1.0
+     */
+    private function setup_i18n() {
+        if ( class_exists( 'Charitable_i18n' ) ) {
+
+            require_once( $this->get_path( 'includes' ) . 'i18n/class-charitable-extension-boilerplate-i18n.php' );
+
+            Charitable_Extension_Boilerplate_i18n::get_instance();
+        }
     }
 
     /**

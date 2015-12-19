@@ -39,13 +39,13 @@ module.exports = function(grunt) {
                             replacement: _class
                         },
                         {
-                            match: "charitable-extension-boilerplate", 
-                            replacement: _textdomain
-                        },
-                        {
                             match: "charitable_extension_boilerplate",
                             replacement: _class.toLowerCase()
-                        }
+                        },
+                        {
+                            match: "charitable-extension-boilerplate", 
+                            replacement: _textdomain
+                        },                        
                     ], 
                     usePrefix: false
                 },
@@ -69,6 +69,10 @@ module.exports = function(grunt) {
                         dest: 'build/' + _textdomain + '/' + _textdomain + '.php'
                     },
                     {
+                        src: [ 'build/' + _textdomain + '/languages/charitable-extension-boilerplate.pot' ], 
+                        dest: 'build/' + _textdomain + '/languages/' + _textdomain + '.pot'
+                    },
+                    {
                         src: [ 'build/' + _textdomain + '/includes/charitable-extension-boilerplate-core-functions.php' ], 
                         dest: 'build/' + _textdomain + '/includes/' + _textdomain + '-core-functions.php'
                     },
@@ -83,10 +87,18 @@ module.exports = function(grunt) {
                     {
                         src: [ 'build/' + _textdomain + '/includes/class-charitable-extension-boilerplate.php' ], 
                         dest: 'build/' + _textdomain + '/includes/class-' + _textdomain + '.php'
+                    },                    
+                    {
+                        src: [ 'build/' + _textdomain + '/includes/admin/charitable-extension-boilerplate-admin-hooks.php' ], 
+                        dest: 'build/' + _textdomain + '/includes/admin/' + _textdomain + '-admin-hooks.php'
                     },
-                                        {
-                        src: [ 'build/' + _textdomain + '/languages/charitable-extension-boilerplate.pot' ], 
-                        dest: 'build/' + _textdomain + '/languages/' + _textdomain + '.pot'
+                    {
+                        src: [ 'build/' + _textdomain + '/includes/admin/class-charitable-extension-boilerplate-admin.php' ], 
+                        dest: 'build/' + _textdomain + '/includes/admin/class-' + _textdomain + '-admin.php'
+                    },
+                    {
+                        src: [ 'build/' + _textdomain + '/includes/i18n/class-charitable-extension-boilerplate-i18n.php' ], 
+                        dest: 'build/' + _textdomain + '/includes/i18n/class-' + _textdomain + '-i18n.php'
                     },
                 ]
             }            
