@@ -1,13 +1,13 @@
 <?php
 /**
  * Plugin Name: 		Charitable - Extension Boilerplate
- * Plugin URI: 			https://github.com/Charitable/Charitable-Extension-Boilerplate
- * Description: 		A skeleton to use to speed up your Charitable extension development.
- * Version: 			0.1
+ * Plugin URI: 			
+ * Description: 		
+ * Version: 			1.0.0
  * Author: 				WP Charitable
- * Author URI: 			https://wpcharitable.com
- * Requires at least: 	4.1
- * Tested up to: 		4.3
+ * Author URI: 			https://www.wpcharitable.com
+ * Requires at least: 	4.2
+ * Tested up to: 		4.4
  *
  * Text Domain: 		charitable-extension-boilerplate
  * Domain Path: 		/languages/

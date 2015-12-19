@@ -71,12 +71,6 @@ class Charitable_Extension_Boilerplate {
     private $directory_url;
 
     /**
-     * @var     array       Store of registered objects.  
-     * @access  private
-     */
-    private $registry;
-
-    /**
      * Create class instance. 
      * 
      * @return  void
@@ -237,36 +231,6 @@ class Charitable_Extension_Boilerplate {
         }
 
         return $path;
-    }
-
-    /**
-     * Stores an object in the plugin's registry.
-     *
-     * @param   mixed       $object
-     * @return  void
-     * @access  public
-     * @since   1.0.0
-     */
-    public function register_object( $object ) {
-        if ( ! is_object( $object ) ) {
-            return;
-        }
-
-        $class = get_class( $object );
-
-        $this->registry[ $class ] = $object;
-    }
-
-    /**
-     * Returns a registered object.
-     * 
-     * @param   string      $class  The type of class you want to retrieve.
-     * @return  mixed               The object if its registered. Otherwise false.
-     * @access  public
-     * @since   1.0.0
-     */
-    public function get_object( $class ) {
-        return isset( $this->registry[ $class ] ) ? $this->registry[ $class ] : false;
     }
 
     /**
