@@ -35,7 +35,7 @@ module.exports = function(grunt) {
                             replacement: _name.toLowerCase()
                         },
                         {
-                            match: "Extension_Boilerplate", 
+                            match: "Charitable_Extension_Boilerplate", 
                             replacement: _class
                         },
                         {
@@ -43,7 +43,7 @@ module.exports = function(grunt) {
                             replacement: _textdomain
                         },
                         {
-                            match: "extension_boilerplate",
+                            match: "charitable_extension_boilerplate",
                             replacement: _class.toLowerCase()
                         }
                     ], 
