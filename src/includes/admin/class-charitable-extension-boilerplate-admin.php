@@ -54,7 +54,7 @@ class Charitable_Extension_Boilerplate_Admin {
     }    
 
     /**
-     * Add the raffles settings to the General settings tab.
+     * Add settings to the Extensions settings tab.
      *
      * @param   array[] $fields
      * @return  array[]
