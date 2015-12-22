@@ -12,6 +12,13 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 /**
+ * Add a direct link to the Extensions settings page from the plugin row.
+ *
+ * @see     Charitable_Extension_Boilerplate_Admin::add_plugin_action_links()
+ */
+add_filter( 'plugin_action_links_' . plugin_basename( charitable_extension_boilerplate()->get_path() ), array( Charitable_Extension_Boilerplate_Admin::get_instance(), 'add_plugin_action_links' ) );
+
+/**
  * Add a "Extension Boilerplate" section to the Extensions settings area of Charitable.
  *
  * @see Charitable_Extension_Boilerplate_Admin::add_extension_boilerplate_settings()

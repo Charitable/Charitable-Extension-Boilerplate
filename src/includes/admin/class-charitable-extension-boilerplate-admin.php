@@ -54,6 +54,19 @@ class Charitable_Extension_Boilerplate_Admin {
     }    
 
     /**
+     * Add custom links to the plugin actions. 
+     *
+     * @param   string[] $links
+     * @return  string[]
+     * @access  public
+     * @since   1.0.0
+     */
+    public function add_plugin_action_links( $links ) {
+        $links[] = '<a href="' . admin_url( 'admin.php?page=charitable-settings&tab=extensions' ) . '">' . __( 'Settings', 'charitable-newsletter-connect' ) . '</a>';
+        return $links;
+    }
+
+    /**
      * Add settings to the Extensions settings tab.
      *
      * @param   array[] $fields
