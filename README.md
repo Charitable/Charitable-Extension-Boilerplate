@@ -9,10 +9,12 @@ There are two ways you can use this boilerplate. If you are comfortable with the
 
 1. Clone or download this Github repository.
 2. [Install Grunt](https://github.com/gruntjs/grunt-cli) if you don't have it already.
-3. From the command line, run the `grunt build` command with the following arguments: `name`, `textdomain` and `class`. For example:
-
+3. From the command line, run the `grunt build` command with the following arguments: `name`, `textdomain` and `class`. For example: 
+    
+    ```sh
     grunt build --name="Subscribe" --textdomain="charitable-subscribe" --class="Charitable_Subscribe"
-
+    ```
+    
 4. The build will create a new folder inside build/textdomain. Copy and paste this into your site's `plugins` directory and it's ready to activate.
 
 ### The old-fashioned way
