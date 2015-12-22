@@ -2,10 +2,10 @@
 /**
  * Charitable Extension Boilerplate Upgrade class.
  * 
- * The responsibility of this class is to manage migrations between versions of Charitable EDD.
+ * The responsibility of this class is to manage migrations between versions of Charitable Extension Boilerplate.
  *
- * @package     Charitable EDD
- * @subpackage  Charitable EDD/Upgrade
+ * @package     Charitable Extension Boilerplate
+ * @subpackage  Charitable Extension Boilerplate/Upgrade
  * @copyright   Copyright (c) 2015, Eric Daams  
  * @license     http://opensource.org/licenses/gpl-1.0.0.php GNU Public License
  * @since       1.0.0
