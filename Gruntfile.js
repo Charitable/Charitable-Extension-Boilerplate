@@ -7,7 +7,8 @@ module.exports = function(grunt) {
 
     var _name = grunt.option( 'name' ), 
         _class = grunt.option( 'class' ), 
-        _textdomain = grunt.option( 'textdomain' );    
+        _textdomain = grunt.option( 'textdomain' ), 
+        _gateway_id = grunt.option( 'gateway_id' );    
  
     // load all grunt tasks
     require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
@@ -53,7 +54,52 @@ module.exports = function(grunt) {
                     {
                         expand: true,
                         cwd: 'src/',
-                        src: [ '**' ], 
+                        src: [ 
+                            '**',
+                            "!includes/gateway/**"
+                        ], 
+                        dest: 'build/' + _textdomain + '/'
+                    }
+                ]
+            },
+            gateway: {
+                options: {
+                    patterns: [
+                        {
+                            match: "Extension Boilerplate", 
+                            replacement: _name
+                        },
+                        {
+                            match: "extension boilerplate", 
+                            replacement: _name.toLowerCase()
+                        },
+                        {
+                            match: "Charitable_Extension_Boilerplate", 
+                            replacement: _class
+                        },
+                        {
+                            match: "charitable_extension_boilerplate",
+                            replacement: _class.toLowerCase()
+                        },
+                        {
+                            match: "charitable-extension-boilerplate", 
+                            replacement: _textdomain
+                        },
+                        {
+                            match: "gateway_id", 
+                            replacement: _gateway_id
+                        },                       
+                    ], 
+                    usePrefix: false
+                },
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'src/',
+                        src: [ 
+                            '**',
+                            "!includes/admin/**"
+                        ], 
                         dest: 'build/' + _textdomain + '/'
                     }
                 ]
@@ -99,9 +145,17 @@ module.exports = function(grunt) {
                     {
                         src: [ 'build/' + _textdomain + '/includes/i18n/class-charitable-extension-boilerplate-i18n.php' ], 
                         dest: 'build/' + _textdomain + '/includes/i18n/class-' + _textdomain + '-i18n.php'
+                    }                    
+                ]
+            },
+            gateway: {
+                files : [
+                    {
+                        src: [ 'build/' + _textdomain + '/includes/gateway/class-charitable-gateway-extension-boilerplate.php' ], 
+                        dest: 'build/' + _textdomain + '/includes/gateway/class-charitable-gateway-' + _gateway_id + '.php'
                     },
                 ]
-            }            
+            }
         },  
 
         // Copy the src files into a new directory
@@ -118,7 +172,13 @@ module.exports = function(grunt) {
     // Build task(s).
     grunt.registerTask( 'build', function() {
         grunt.task.run( 'clean' );
-        grunt.task.run( 'replace' );
-        grunt.task.run( 'rename' );
+        grunt.task.run( 'replace:main' );
+        grunt.task.run( 'rename:main' );
+    });
+
+    grunt.registerTask( 'build-gateway', function() {
+        grunt.task.run( 'clean' );
+        grunt.task.run( 'replace:gateway' );
+        grunt.task.run( 'rename' ); 
     });
 };
