@@ -97,8 +97,7 @@ module.exports = function(grunt) {
                         expand: true,
                         cwd: 'src/',
                         src: [ 
-                            '**',
-                            "!includes/admin/**"
+                            '**'
                         ], 
                         dest: 'build/' + _textdomain + '/'
                     }
