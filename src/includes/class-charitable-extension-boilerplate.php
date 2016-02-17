@@ -198,8 +198,8 @@ class Charitable_Extension_Boilerplate {
 
         if ( $db_version !== self::VERSION ) {
 
-            require_once( charitable()->get_path( 'includes' ) . 'class-charitable-upgrade.php' );
-            require_once( $this->get_path( 'includes' ) . 'class-charitable-extension-boilerplate-upgrade.php' );
+            require_once( charitable()->get_path( 'admin' ) . 'upgrades/class-charitable-upgrade.php' );
+            require_once( $this->get_path( 'includes' ) . 'admin/upgrades/class-charitable-extension-boilerplate-upgrade.php' );
 
             Charitable_Extension_Boilerplate_Upgrade::upgrade_from( $db_version, self::VERSION );
         }
