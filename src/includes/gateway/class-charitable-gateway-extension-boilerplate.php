@@ -165,20 +165,39 @@ class Charitable_Gateway_Extension_Boilerplate extends Charitable_Gateway {
     /**
      * Process the donation with the gateway.
      *   
+     * @param   mixed $return
      * @param   int $donation_id
      * @param   Charitable_Donation_Processor $processor
-     * @return  void
+     * @return  boolean|array
      * @access  public
      * @static
      * @since   1.0.0
      */
-    public static function process_donation( $donation_id, $processor ) {
+    public static function process_donation( $return, $donation_id, $processor ) {
         $donation = new Charitable_Donation( $donation_id );
         $donor = $donation->get_donor();
 
         /**
          * @todo Create donation charge through gateway.
+         *
+         * You should return one of three values.
+         *
+         * 1. If the donation fails to be processed and the user should be 
+         *    returned to the donation page, return false.
+         * 2. If the donation succeeds and the user should be directed to
+         *    the donation receipt, return true.
+         * 3. If the user should be redirected elsewhere (for example, 
+         *    a gateway-hosted payment page), you should return an array
+         *    like this:
+
+            array(
+                'redirect' => $redirect_url, 
+                'safe' => false // Set to false if you are redirecting away from the site.
+            );
+         *
          */
+
+        return true;
     }
 
     /**
@@ -209,6 +228,23 @@ class Charitable_Gateway_Extension_Boilerplate extends Charitable_Gateway {
         wp_safe_redirect( $redirect_url );
         die();
     }
+
+    /**
+     * This is required for compatibility with Charitable before version 1.3. 
+     *
+     * @deprecated
+     */
+    public static function process_donation_legacy( $donation_id, $processor ) {
+        $result = self::process_donation( true, $donation_id, $processor );
+
+        /** 
+         * A false result means we need to be redirected back to 
+         * the donation form.
+         */
+        if ( ! $result ) {
+            self::redirect_to_donation_form( $donation_id );
+        }
+    }    
 }
 
 endif; // End class_exists check

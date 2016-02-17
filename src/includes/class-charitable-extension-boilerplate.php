@@ -175,7 +175,7 @@ class Charitable_Extension_Boilerplate {
      *
      * @return  void
      * @access  private
-     * @since   0.1.0
+     * @since   1.0.0
      */
     private function setup_i18n() {
         if ( class_exists( 'Charitable_i18n' ) ) {
