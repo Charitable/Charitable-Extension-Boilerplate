@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name: 		Charitable - Extension Boilerplate
- * Plugin URI: 			
- * Description: 		
+ * Plugin URI:
+ * Description:
  * Version: 			1.0.0
  * Author: 				WP Charitable
  * Author URI: 			https://www.wpcharitable.com
@@ -14,10 +14,10 @@
  *
  * @package 			Charitable Extension Boilerplate
  * @category 			Core
- * @author 				Studio164a
+ * @author 				WP Charitable
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly
 
 /**
  * Load plugin class, but only if Charitable is found and activated.
@@ -25,7 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * @return 	void
  * @since 	1.0.0
  */
-function charitable_extension_boilerplate_load() {	
+function charitable_extension_boilerplate_load() {
 	require_once( 'includes/class-charitable-extension-boilerplate.php' );
 
 	$has_dependencies = true;
@@ -43,12 +43,12 @@ function charitable_extension_boilerplate_load() {
 		$activation = $activation->run();
 
 		$has_dependencies = false;
-	} 
-	else {
+
+	} else {
 
 		new Charitable_Extension_Boilerplate( __FILE__ );
 
-	}	
+	}
 }
 
 add_action( 'plugins_loaded', 'charitable_extension_boilerplate_load', 1 );

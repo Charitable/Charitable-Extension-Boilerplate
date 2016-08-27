@@ -1,15 +1,15 @@
-<?php 
+<?php
 /**
  * Charitable Extension Boilerplate admin hooks.
- * 
+ *
  * @package     Charitable Extension Boilerplate/Functions/Admin
  * @version     1.0.0
  * @author      Eric Daams
  * @copyright   Copyright (c) 2015, Studio 164a
- * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License  
+ * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly
 
 /**
  * Add a direct link to the Extensions settings page from the plugin row.

@@ -74,6 +74,13 @@ module.exports = function(grunt) {
                             replacement: _name.toLowerCase()
                         },
                         {
+                            match: "extension_boilerplate",
+                            replacement: function() {
+                                var name = _name.replace( '/\s/g', '_' );
+                                return name.toLowerCase();
+                            }
+                        },
+                        {
                             match: "Charitable_Extension_Boilerplate", 
                             replacement: _class
                         },
@@ -86,11 +93,20 @@ module.exports = function(grunt) {
                             replacement: _textdomain
                         },
                         {
+                            match: "Gateway_Extension_Boilerplate",
+                            replacement: "Gateway_" + _name.replace( '/\s/g', '_' )
+                        },                        
+                        {
                             match: "gateway_id", 
                             replacement: _gateway_id
-                        },                       
+                        },
+                        {
+                            match: "gateway__id", 
+                            replacement: "gateway_id"
+                        }                        
                     ], 
-                    usePrefix: false
+                    usePrefix: false,
+                    preserveOrder: true
                 },
                 files: [
                     {
@@ -122,17 +138,13 @@ module.exports = function(grunt) {
                         dest: 'build/' + _textdomain + '/includes/' + _textdomain + '-core-functions.php'
                     },
                     {
-                        src: [ 'build/' + _textdomain + '/includes/class-charitable-extension-boilerplate-template.php' ], 
-                        dest: 'build/' + _textdomain + '/includes/class-' + _textdomain + '-template.php'
-                    },
-                    {
-                        src: [ 'build/' + _textdomain + '/includes/class-charitable-extension-boilerplate-upgrade.php' ], 
-                        dest: 'build/' + _textdomain + '/includes/class-' + _textdomain + '-upgrade.php'
-                    },
-                    {
                         src: [ 'build/' + _textdomain + '/includes/class-charitable-extension-boilerplate.php' ], 
                         dest: 'build/' + _textdomain + '/includes/class-' + _textdomain + '.php'
-                    },                    
+                    },  
+                    {
+                        src: [ 'build/' + _textdomain + '/includes/public/class-charitable-extension-boilerplate-template.php' ], 
+                        dest: 'build/' + _textdomain + '/includes/public/class-' + _textdomain + '-template.php'
+                    },
                     {
                         src: [ 'build/' + _textdomain + '/includes/admin/charitable-extension-boilerplate-admin-hooks.php' ], 
                         dest: 'build/' + _textdomain + '/includes/admin/' + _textdomain + '-admin-hooks.php'
@@ -140,6 +152,10 @@ module.exports = function(grunt) {
                     {
                         src: [ 'build/' + _textdomain + '/includes/admin/class-charitable-extension-boilerplate-admin.php' ], 
                         dest: 'build/' + _textdomain + '/includes/admin/class-' + _textdomain + '-admin.php'
+                    },
+                    {
+                        src: [ 'build/' + _textdomain + '/includes/admin/upgrades/class-charitable-extension-boilerplate-upgrade.php' ], 
+                        dest: 'build/' + _textdomain + '/includes/admin/upgrades/class-' + _textdomain + '-upgrade.php'
                     },
                     {
                         src: [ 'build/' + _textdomain + '/includes/i18n/class-charitable-extension-boilerplate-i18n.php' ], 
@@ -153,6 +169,10 @@ module.exports = function(grunt) {
                         src: [ 'build/' + _textdomain + '/includes/gateway/class-charitable-gateway-extension-boilerplate.php' ], 
                         dest: 'build/' + _textdomain + '/includes/gateway/class-charitable-gateway-' + _gateway_id + '.php'
                     },
+                    {
+                        src: [ 'build/' + _textdomain + '/includes/gateway/charitable-extension-boilerplate-gateway-hooks.php' ], 
+                        dest: 'build/' + _textdomain + '/includes/gateway/charitable-' + _gateway_id + '-gateway-hooks.php'
+                    }
                 ]
             }
         },  
