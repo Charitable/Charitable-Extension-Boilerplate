@@ -158,6 +158,10 @@ module.exports = function(grunt) {
                         dest: 'build/' + _textdomain + '/includes/admin/upgrades/class-' + _textdomain + '-upgrade.php'
                     },
                     {
+                        src: [ 'build/' + _textdomain + '/includes/admin/upgrades/charitable-extension-boilerplate-upgrade-hooks.php' ], 
+                        dest: 'build/' + _textdomain + '/includes/admin/upgrades/' + _textdomain + '-upgrade-hooks.php'
+                    },
+                    {
                         src: [ 'build/' + _textdomain + '/includes/i18n/class-charitable-extension-boilerplate-i18n.php' ], 
                         dest: 'build/' + _textdomain + '/includes/i18n/class-' + _textdomain + '-i18n.php'
                     }                    

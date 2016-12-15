@@ -5,7 +5,7 @@
  * The responsibility of this class is to load all the plugin's functionality.
  *
  * @package     Charitable Extension Boilerplate
- * @copyright   Copyright (c) 2015, Eric Daams
+ * @copyright   Copyright (c) 2016, Eric Daams
  * @license     http://opensource.org/licenses/gpl-1.0.0.php GNU Public License
  * @since       1.0.0
  */
@@ -114,8 +114,6 @@ if ( ! class_exists( 'Charitable_Extension_Boilerplate' ) ) :
 
 			$this->load_dependencies();
 
-			$this->maybe_upgrade();
-
 			$this->maybe_start_admin();
 
 			$this->maybe_start_public();
@@ -195,25 +193,6 @@ if ( ! class_exists( 'Charitable_Extension_Boilerplate' ) ) :
 				require_once( $this->get_path( 'includes' ) . 'i18n/class-charitable-extension-boilerplate-i18n.php' );
 
 				Charitable_Extension_Boilerplate_i18n::get_instance();
-			}
-		}
-
-		/**
-		 * Perform upgrade routine if necessary.
-		 *
-		 * @return  void
-		 * @access  private
-		 * @since   1.0.0
-		 */
-		private function maybe_upgrade() {
-			$db_version = get_option( 'charitable_extension_boilerplate_version' );
-
-			if ( self::VERSION !== $db_version ) {
-
-				require_once( charitable()->get_path( 'admin' ) . 'upgrades/class-charitable-upgrade.php' );
-				require_once( $this->get_path( 'includes' ) . 'admin/upgrades/class-charitable-extension-boilerplate-upgrade.php' );
-
-				Charitable_Extension_Boilerplate_Upgrade::upgrade_from( $db_version, self::VERSION );
 			}
 		}
 

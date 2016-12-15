@@ -5,7 +5,7 @@
  * @package     Charitable Extension Boilerplate/Classes/Charitable_Extension_Boilerplate_Admin
  * @version     1.0.0
  * @author      Eric Daams
- * @copyright   Copyright (c) 2015, Studio 164a
+ * @copyright   Copyright (c) 2016, Studio 164a
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
  */
 
@@ -35,6 +35,8 @@ if ( ! class_exists( 'Charitable_Extension_Boilerplate_Admin' ) ) :
 		 * @since   1.0.0
 		 */
 		private function __construct() {
+			require_once( 'upgrades/class-charitable-extension-boilerplate-upgrade.php' );
+			require_once( 'upgrades/charitable-extension-boilerplate-upgrade-hooks.php' );
 		}
 
 		/**
@@ -72,7 +74,7 @@ if ( ! class_exists( 'Charitable_Extension_Boilerplate_Admin' ) ) :
 		 * @return  array[]
 		 * @access  public
 		 * @since   1.0.0
-	 	*/
+		*/
 		public function add_extension_boilerplate_settings( $fields = array() ) {
 			if ( ! charitable_is_settings_view( 'extensions' ) ) {
 				return $fields;

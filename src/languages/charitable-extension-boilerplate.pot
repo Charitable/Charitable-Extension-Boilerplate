@@ -1,4 +1,4 @@
-# Copyright (C) 2015 WP Charitable
+# Copyright (c) 2016 WP Charitable
 # This file is distributed under the same license as the Charitable - Extension Boilerplate package.
 msgid ""
 msgstr ""

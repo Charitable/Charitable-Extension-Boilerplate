@@ -5,7 +5,7 @@
  * @version     1.0.0
  * @package     Charitable Extension Boilerplate/Classes/Charitable_Extension_Boilerplate_Template
  * @author      Eric Daams
- * @copyright   Copyright (c) 2015, Studio 164a
+ * @copyright   Copyright (c) 2016, Studio 164a
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
  */
 

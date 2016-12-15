@@ -26,6 +26,14 @@ There are two ways you can use this boilerplate. If you are comfortable with the
 
 ## Highlights
 
+### Scaffold a gateway
+
+The Boilerplate includes an extra Grunt command that allows you to create a skeleton gateway extension. Usage: 
+
+    ```sh
+    grunt build-gateway --name="Stripe" --textdomain="charitable-stripe" --class="Charitable_Stripe" --gateway_id="stripe"
+    ```
+
 ### Template class 
 
 The Boilerplate includes a Template class. See [`includes/class-charitable-extension-boilerplate-template.php`](https://github.com/Charitable/Charitable-Extension-Boilerplate/blob/master/includes/class-charitable-extension-boilerplate-template.php). You can call this class using the class itself or through the `charitable_extension_boilerplate_template()` function, detailed below. 

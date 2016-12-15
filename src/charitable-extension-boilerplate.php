@@ -7,7 +7,7 @@
  * Author: 				WP Charitable
  * Author URI: 			https://www.wpcharitable.com
  * Requires at least: 	4.2
- * Tested up to: 		4.4
+ * Tested up to: 		4.6.1
  *
  * Text Domain: 		charitable-extension-boilerplate
  * Domain Path: 		/languages/
@@ -35,7 +35,7 @@ function charitable_extension_boilerplate_load() {
 
 		if ( ! class_exists( 'Charitable_Extension_Activation' ) ) {
 
-			require_once 'includes/class-charitable-extension-activation.php';
+			require_once 'includes/admin/class-charitable-extension-activation.php';
 
 		}
 
