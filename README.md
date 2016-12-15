@@ -30,11 +30,9 @@ There are two ways you can use this boilerplate. If you are comfortable with the
 
 The Boilerplate includes an extra Grunt command that allows you to create a skeleton gateway extension. Usage: 
 
-    ```sh
-    grunt build-gateway --name="Stripe" --textdomain="charitable-stripe" --class="Charitable_Stripe" --gateway_id="stripe"
-    ```
-
-/
+```sh
+grunt build-gateway --name="Stripe" --textdomain="charitable-stripe" --class="Charitable_Stripe" --gateway_id="stripe"
+```
 
 ### Template class 
 
