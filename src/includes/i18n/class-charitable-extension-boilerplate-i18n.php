@@ -5,11 +5,12 @@
  * @package     Charitable/Classes/Charitable_i18n
  * @version     1.0.0
  * @author      Eric Daams
- * @copyright   Copyright (c) 2016, Studio 164a
+ * @copyright   Copyright (c) 2017, Studio 164a
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
  */
 
-if ( ! defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 /* Ensure that Charitable_i18n exists */
 if ( ! class_exists( 'Charitable_i18n' ) ) :
@@ -26,6 +27,10 @@ if ( ! class_exists( 'Charitable_Extension_Boilerplate_i18n' ) ) :
 	class Charitable_Extension_Boilerplate_i18n extends Charitable_i18n {
 
 		/**
+		 * Plugin textdomain.
+		 *
+		 * @since   1.0.0
+		 *
 		 * @var     string
 		 */
 		protected $textdomain = 'charitable-extension-boilerplate';
@@ -33,7 +38,6 @@ if ( ! class_exists( 'Charitable_Extension_Boilerplate_i18n' ) ) :
 		/**
 		 * Set up the class.
 		 *
-		 * @access  protected
 		 * @since   1.0.0
 		 */
 		protected function __construct() {

@@ -7,7 +7,7 @@
  * Author: 				WP Charitable
  * Author URI: 			https://www.wpcharitable.com
  * Requires at least: 	4.2
- * Tested up to: 		4.6.1
+ * Tested up to: 		4.8
  *
  * Text Domain: 		charitable-extension-boilerplate
  * Domain Path: 		/languages/
@@ -17,18 +17,18 @@
  * @author 				WP Charitable
  */
 
-if ( ! defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 /**
  * Load plugin class, but only if Charitable is found and activated.
  *
- * @return 	void
- * @since 	1.0.0
+ * @return 	false|Charitable_Extension_Boilerplate Whether the class was loaded.
  */
 function charitable_extension_boilerplate_load() {
 	require_once( 'includes/class-charitable-extension-boilerplate.php' );
 
-	$has_dependencies = true;
+	$loaded = false;
 
 	/* Check for Charitable */
 	if ( ! class_exists( 'Charitable' ) ) {
@@ -42,13 +42,13 @@ function charitable_extension_boilerplate_load() {
 		$activation = new Charitable_Extension_Activation( plugin_dir_path( __FILE__ ), basename( __FILE__ ) );
 		$activation = $activation->run();
 
-		$has_dependencies = false;
-
 	} else {
 
-		new Charitable_Extension_Boilerplate( __FILE__ );
+		$loaded = new Charitable_Extension_Boilerplate( __FILE__ );
 
 	}
+
+	return $loaded;
 }
 
 add_action( 'plugins_loaded', 'charitable_extension_boilerplate_load', 1 );

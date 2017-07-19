@@ -5,11 +5,12 @@
  * @package     Charitable Extension Boilerplate/Classes/Charitable_Extension_Boilerplate_Admin
  * @version     1.0.0
  * @author      Eric Daams
- * @copyright   Copyright (c) 2016, Studio 164a
+ * @copyright   Copyright (c) 2017, Studio 164a
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
  */
 
-if ( ! defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 if ( ! class_exists( 'Charitable_Extension_Boilerplate_Admin' ) ) :
 
@@ -21,18 +22,19 @@ if ( ! class_exists( 'Charitable_Extension_Boilerplate_Admin' ) ) :
 	class Charitable_Extension_Boilerplate_Admin {
 
 		/**
-		 * @var     Charitable_Extension_Boilerplate_Admin
-		 * @access  private
-		 * @static
+		 * The single static class instance.
+		 *
 		 * @since   1.0.0
+		 *
+		 * @var     Charitable_Extension_Boilerplate_Admin
 		 */
 		private static $instance = null;
 
 		/**
 		 * Create class object. Private constructor.
 		 *
-		 * @access  private
 		 * @since   1.0.0
+		 *
 		 */
 		private function __construct() {
 			require_once( 'upgrades/class-charitable-extension-boilerplate-upgrade.php' );
@@ -42,8 +44,6 @@ if ( ! class_exists( 'Charitable_Extension_Boilerplate_Admin' ) ) :
 		/**
 		 * Create and return the class object.
 		 *
-		 * @access  public
-		 * @static
 		 * @since   1.0.0
 		 */
 		public static function get_instance() {
@@ -57,10 +57,10 @@ if ( ! class_exists( 'Charitable_Extension_Boilerplate_Admin' ) ) :
 		/**
 		 * Add custom links to the plugin actions.
 		 *
-		 * @param   string[] $links
-		 * @return  string[]
-		 * @access  public
 		 * @since   1.0.0
+		 *
+		 * @param   string[] $links Links to be added to plugin actions row.
+		 * @return  string[]
 		 */
 		public function add_plugin_action_links( $links ) {
 			$links[] = '<a href="' . admin_url( 'admin.php?page=charitable-settings&tab=extensions' ) . '">' . __( 'Settings', 'charitable-newsletter-connect' ) . '</a>';
@@ -70,11 +70,11 @@ if ( ! class_exists( 'Charitable_Extension_Boilerplate_Admin' ) ) :
 		/**
 		 * Add settings to the Extensions settings tab.
 		 *
-		 * @param   array[] $fields
-		 * @return  array[]
-		 * @access  public
 		 * @since   1.0.0
-		*/
+		 *
+		 * @param   array[] $fields Settings to display in tab.
+		 * @return  array[]
+		 */
 		public function add_extension_boilerplate_settings( $fields = array() ) {
 			if ( ! charitable_is_settings_view( 'extensions' ) ) {
 				return $fields;
@@ -107,4 +107,4 @@ if ( ! class_exists( 'Charitable_Extension_Boilerplate_Admin' ) ) :
 		}
 	}
 
-endif; // End class_exists check
+endif;

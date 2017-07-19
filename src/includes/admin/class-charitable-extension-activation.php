@@ -6,7 +6,8 @@
  * @since       1.0.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 /**
  * Charitable_Extension_Activation
@@ -20,11 +21,11 @@ class Charitable_Extension_Activation {
 	/**
 	 * Setup the activation class
 	 *
-	 * @param 		string $plugin_path The absolute path to the plugin's directory.
-	 * @param 		string $plugin_file The absolute path to the main plugin file.
-	 * @access      public
-	 * @since       1.0.0
-	 * @return      void
+	 * @since   1.0.0
+	 *
+	 * @param 	string $plugin_path The absolute path to the plugin's directory.
+	 * @param 	string $plugin_file The absolute path to the main plugin file.
+	 * @return 	void
 	 */
 	public function __construct( $plugin_path, $plugin_file ) {
 
@@ -70,9 +71,9 @@ class Charitable_Extension_Activation {
 	/**
 	 * Process plugin deactivation
 	 *
-	 * @return      void
-	 * @access      public
-	 * @since       1.0.0
+	 * @since   1.0.0
+	 *
+	 * @return 	void
 	 */
 	public function run() {
 		add_action( 'admin_notices', array( $this, 'missing_charitable_notice' ) );
@@ -81,9 +82,9 @@ class Charitable_Extension_Activation {
 	/**
 	 * Display notice if Charitable isn't installed
 	 *
-	 * @return      string The notice to display
-	 * @access      public
-	 * @since       1.0.0
+	 * @since 	1.0.0
+	 *
+	 * @return 	void
 	 */
 	public function missing_charitable_notice() {
 		if ( $this->has_charitable ) {

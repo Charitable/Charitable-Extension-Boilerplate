@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Charitable Extension Boilerplate Core Functions.
  *
@@ -12,7 +11,8 @@
  * @version     1.0.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 /**
  * This returns the original Charitable_Extension_Boilerplate object.
@@ -20,8 +20,9 @@ if ( ! defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly
  * Use this whenever you want to get an instance of the class. There is no
  * reason to instantiate a new object, though you can do so if you're stubborn :)
  *
- * @return  Charitable_Extension_Boilerplate
  * @since   1.0.0
+ *
+ * @return  Charitable_Extension_Boilerplate
  */
 function charitable_extension_boilerplate() {
 	return Charitable_Extension_Boilerplate::get_instance();
@@ -30,10 +31,11 @@ function charitable_extension_boilerplate() {
 /**
  * Displays a template.
  *
- * @param   string|array $template_name A single template name or an ordered array of template
- * @param   array        $args Optional array of arguments to pass to the view.
- * @return  Charitable_Extension_Boilerplate_Template
  * @since   1.0.0
+ *
+ * @param   string|array $template_name A single template name or an ordered array of template.
+ * @param   array        $args          Optional array of arguments to pass to the view.
+ * @return  Charitable_Extension_Boilerplate_Template
  */
 function charitable_extension_boilerplate_template( $template_name, array $args = array() ) {
 	if ( empty( $args ) ) {

@@ -5,12 +5,13 @@
  * The responsibility of this class is to load all the plugin's functionality.
  *
  * @package     Charitable Extension Boilerplate
- * @copyright   Copyright (c) 2016, Eric Daams
+ * @copyright   Copyright (c) 2017, Eric Daams
  * @license     http://opensource.org/licenses/gpl-1.0.0.php GNU Public License
  * @since       1.0.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 if ( ! class_exists( 'Charitable_Extension_Boilerplate' ) ) :
 
@@ -22,59 +23,83 @@ if ( ! class_exists( 'Charitable_Extension_Boilerplate' ) ) :
 	class Charitable_Extension_Boilerplate {
 
 		/**
+		 * Plugin version.
+		 *
+		 * @since   1.0.0
+		 *
 		 * @var string
 		 */
 		const VERSION = '1.0.0';
 
 		/**
-		 * @var string  A date in the format: YYYYMMDD
+		 * Database version. A date in the format: YYYYMMDD
+		 *
+		 * @since   1.0.0
+		 *
+		 * @var string
 		 */
 		const DB_VERSION = '20151021';
 
 		/**
-		 * @var string The product name.
+		 * The product name.
+		 *
+		 * @since   1.0.0
+		 *
+		 * @var string
 		 */
 		const NAME = 'Charitable Extension Boilerplate';
 
 		/**
-		 * @var string The product author.
+		 * The product author.
+		 *
+		 * @since   1.0.0
+		 *
+		 * @var string
 		 */
 		const AUTHOR = 'Studio 164a';
 
 		/**
-	 * @var Charitable_Extension_Boilerplate
-	 */
+		 * Single static instance of this class.
+		 *
+		 * @since   1.0.0
+		 *
+	     * @var 	Charitable_Extension_Boilerplate
+	     */
 		private static $instance = null;
 
 		/**
 		 * The root file of the plugin.
 		 *
+		 * @since   1.0.0
+		 *
 		 * @var     string
-		 * @access  private
 		 */
 		private $plugin_file;
 
 		/**
 		 * The root directory of the plugin.
 		 *
+		 * @since   1.0.0
+		 *
 		 * @var     string
-		 * @access  private
 		 */
 		private $directory_path;
 
 		/**
 		 * The root directory of the plugin as a URL.
 		 *
+		 * @since   1.0.0
+		 *
 		 * @var     string
-		 * @access  private
 		 */
 		private $directory_url;
 
 		/**
 		 * Create class instance.
 		 *
-		 * @return  void
 		 * @since   1.0.0
+		 *
+		 * @param 	string $plugin_file Absolute path to the main plugin file.
 		 */
 		public function __construct( $plugin_file ) {
 			$this->plugin_file      = $plugin_file;
@@ -87,8 +112,9 @@ if ( ! class_exists( 'Charitable_Extension_Boilerplate' ) ) :
 		/**
 		 * Returns the original instance of this class.
 		 *
-		 * @return  Charitable
 		 * @since   1.0.0
+		 *
+		 * @return  Charitable
 		 */
 		public static function get_instance() {
 			return self::$instance;
@@ -99,9 +125,9 @@ if ( ! class_exists( 'Charitable_Extension_Boilerplate' ) ) :
 		 *
 		 * This is only ever executed once.
 		 *
-		 * @return  void
-		 * @access  public
 		 * @since   1.0.0
+		 *
+		 * @return  void
 		 */
 		public function start() {
 			// If we've already started (i.e. run this function once before), do not pass go.
@@ -109,7 +135,7 @@ if ( ! class_exists( 'Charitable_Extension_Boilerplate' ) ) :
 				return;
 			}
 
-			// Set static instance
+			// Set static instance.
 			self::$instance = $this;
 
 			$this->load_dependencies();
@@ -129,9 +155,9 @@ if ( ! class_exists( 'Charitable_Extension_Boilerplate' ) ) :
 		/**
 		 * Include necessary files.
 		 *
-		 * @return  void
-		 * @access  private
 		 * @since   1.0.0
+		 *
+		 * @return  void
 		 */
 		private function load_dependencies() {
 			require_once( $this->get_path( 'includes' ) . 'charitable-extension-boilerplate-core-functions.php' );
@@ -140,9 +166,9 @@ if ( ! class_exists( 'Charitable_Extension_Boilerplate' ) ) :
 		/**
 		 * Load the admin-only functionality.
 		 *
-		 * @return  void
-		 * @access  private
 		 * @since   1.0.0
+		 *
+		 * @return  void
 		 */
 		private function maybe_start_admin() {
 			if ( ! is_admin() ) {
@@ -156,9 +182,9 @@ if ( ! class_exists( 'Charitable_Extension_Boilerplate' ) ) :
 		/**
 		 * Load the public-only functionality.
 		 *
+		 * @since   1.0.0
+		 *
 		 * @return 	void
-		 * @access 	private
-		 * @since 	1.0.0
 		 */
 		private function maybe_start_public() {
 			require_once( $this->get_path( 'includes' ) . 'public/class-charitable-extension-boilerplate-template.php' );
@@ -167,9 +193,9 @@ if ( ! class_exists( 'Charitable_Extension_Boilerplate' ) ) :
 		/**
 		 * Set up licensing for the extension.
 		 *
-		 * @return  void
-		 * @access  private
 		 * @since   1.0.0
+		 *
+		 * @return  void
 		 */
 		private function setup_licensing() {
 			charitable_get_helper( 'licenses' )->register_licensed_product(
@@ -183,9 +209,9 @@ if ( ! class_exists( 'Charitable_Extension_Boilerplate' ) ) :
 		/**
 		 * Set up the internationalisation for the plugin.
 		 *
-		 * @return  void
-		 * @access  private
 		 * @since   1.0.0
+		 *
+		 * @return  void
 		 */
 		private function setup_i18n() {
 			if ( class_exists( 'Charitable_i18n' ) ) {
@@ -199,9 +225,9 @@ if ( ! class_exists( 'Charitable_Extension_Boilerplate' ) ) :
 		/**
 		 * Returns whether we are currently in the start phase of the plugin.
 		 *
-		 * @return  bool
-		 * @access  public
 		 * @since   1.0.0
+		 *
+		 * @return  bool
 		 */
 		public function is_start() {
 			return current_filter() == 'charitable_extension_boilerplate_start';
@@ -210,9 +236,9 @@ if ( ! class_exists( 'Charitable_Extension_Boilerplate' ) ) :
 		/**
 		 * Returns whether the plugin has already started.
 		 *
-		 * @return  bool
-		 * @access  public
 		 * @since   1.0.0
+		 *
+		 * @return  bool
 		 */
 		public function started() {
 			return did_action( 'charitable_extension_boilerplate_start' ) || current_filter() == 'charitable_extension_boilerplate_start';
@@ -221,9 +247,9 @@ if ( ! class_exists( 'Charitable_Extension_Boilerplate' ) ) :
 		/**
 		 * Returns the plugin's version number.
 		 *
-		 * @return  string
-		 * @access  public
 		 * @since   1.0.0
+		 *
+		 * @return  string
 		 */
 		public function get_version() {
 			return self::VERSION;
@@ -232,10 +258,11 @@ if ( ! class_exists( 'Charitable_Extension_Boilerplate' ) ) :
 		/**
 		 * Returns plugin paths.
 		 *
-		 * @param   string $path            // If empty, returns the path to the plugin.
-		 * @param   bool $absolute_path     // If true, returns the file system path. If false, returns it as a URL.
-		 * @return  string
 		 * @since   1.0.0
+		 *
+		 * @param   string  $type          If empty, returns the path to the plugin.
+		 * @param   boolean $absolute_path If true, returns the file system path. If false, returns it as a URL.
+		 * @return  string
 		 */
 		public function get_path( $type = '', $absolute_path = true ) {
 			$base = $absolute_path ? $this->directory_path : $this->directory_url;
@@ -266,23 +293,31 @@ if ( ! class_exists( 'Charitable_Extension_Boilerplate' ) ) :
 		 * This class is specifically designed to be instantiated once. You can retrieve the instance using charitable()
 		 *
 		 * @since   1.0.0
-		 * @access  public
+		 *
 		 * @return  void
 		 */
 		public function __clone() {
-			_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'charitable-extension-boilerplate' ), '1.0.0' );
+			charitable_get_deprecated()->doing_it_wrong(
+				__FUNCTION__,
+				__( 'Cheatin&#8217; huh?', 'charitable-extension-boilerplate' ),
+				'1.0.0'
+			);
 		}
 
 		/**
 		 * Disable unserializing of the class.
 		 *
 		 * @since   1.0.0
-		 * @access  public
+		 *
 		 * @return  void
 		 */
 		public function __wakeup() {
-			_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'charitable-extension-boilerplate' ), '1.0.0' );
+			charitable_get_deprecated()->doing_it_wrong(
+				__FUNCTION__,
+				__( 'Cheatin&#8217; huh?', 'charitable-extension-boilerplate' ),
+				'1.0.0'
+			);
 		}
 	}
 
-endif; // End if class_exists check
+endif;
