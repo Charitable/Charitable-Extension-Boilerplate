@@ -4,14 +4,14 @@
 "use strict";
 
 module.exports = function(grunt) {
- 
+
     // load all grunt tasks
     require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
- 
+
     grunt.initConfig({
 
         pkg: grunt.file.readJSON('package.json'),
- 
+
         // watch for changes and run sass
         watch: {
             sass: {
@@ -33,6 +33,13 @@ module.exports = function(grunt) {
                     dest: '.',
                     ext: '.css'
                 }]
+            }
+        },
+
+        // Uglify Javascript to concat, minify, and make source maps.
+        uglify: {
+            dist: {
+                files: {}
             }
         },
 
@@ -100,7 +107,7 @@ module.exports = function(grunt) {
                     '**',
                     '!bin/**',
                     '!composer.json',
-                    '!composer.lock', 
+                    '!composer.lock',
                     '!phpunit.xml',
                     '!node_modules/**',
                     '!build/**',
@@ -112,7 +119,7 @@ module.exports = function(grunt) {
                     '!**/Gruntfile.js',
                     '!**/package.json',
                     '!**/README.md',
-                    '!**/*~', 
+                    '!**/*~',
                     '!assets/css/scss/**',
                     '!assets/css/*.map'
                 ],
@@ -140,5 +147,5 @@ module.exports = function(grunt) {
     grunt.registerTask( 'default', 'watch' );
 
     // Build task(s).
-    grunt.registerTask( 'build', [ 'makepot',  'clean', 'copy', 'compress' ] );
+	grunt.registerTask( 'build', [ 'sass', 'makepot', 'uglify', 'cssmin', 'clean', 'copy', 'compress' ] );
 };

@@ -1,48 +1,44 @@
 <?php
 /**
- * Extension Boilerplate Gateway class
+ * Extension Boilerplate Gateway class.
  *
- * @version     1.0.0
- * @package     Charitable Extension Boilerplate/Classes/Charitable_Gateway_Extension_Boilerplate
- * @author      Eric Daams
- * @copyright   Copyright (c) 2017, Studio 164a
- * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @package   Charitable Extension Boilerplate/Classes/Charitable_Gateway_Extension_Boilerplate
+ * @copyright Copyright (c) 2019, Studio 164a
+ * @license   http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @since     1.0.0
+ * @version   1.0.0
  */
 
 // Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) { exit; }
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 if ( ! class_exists( 'Charitable_Gateway_Extension_Boilerplate' ) ) :
 
 	/**
-	 * Extension Boilerplate Gateway
+	 * Extension Boilerplate Gateway.
 	 *
-	 * @since       1.0.0
+	 * @since 1.0.0
 	 */
 	class Charitable_Gateway_Extension_Boilerplate extends Charitable_Gateway {
 
-		/**
-		 * The gateway ID.
-		 *
-		 * @since   1.0.0
-		 *
-		 * @var     string
-		 */
+		/** The gateway ID. */
 		const ID = 'gateway_id';
 
 		/**
 		 * Flags whether the gateway requires credit card fields added to the donation form.
 		 *
-		 * @since   1.0.0
+		 * @since 1.0.0
 		 *
-		 * @var     boolean
+		 * @var   boolean
 		 */
 		protected $credit_card_form;
 
 		/**
 		 * Instantiate the gateway class, defining its key values.
 		 *
-		 * @since   1.0.0
+		 * @since 1.0.0
 		 */
 		public function __construct() {
 			$this->name = apply_filters( 'charitable_gateway_extension_boilerplate_name', __( 'Extension Boilerplate', 'charitable-extension-boilerplate' ) );
@@ -64,9 +60,9 @@ if ( ! class_exists( 'Charitable_Gateway_Extension_Boilerplate' ) ) :
 		/**
 		 * Returns the current gateway's ID.
 		 *
-		 * @since   1.0.0
+		 * @since  1.0.0
 		 *
-		 * @return  string
+		 * @return string
 		 */
 		public static function get_gateway__id() {
 			return self::ID;
@@ -75,24 +71,24 @@ if ( ! class_exists( 'Charitable_Gateway_Extension_Boilerplate' ) ) :
 		/**
 		 * Register gateway settings.
 		 *
-		 * @since   1.0.0
+		 * @since  1.0.0
 		 *
-		 * @param   array[] $settings Default array of settings for the gateway.
-		 * @return  array[]
+		 * @param  array[] $settings Default array of settings for the gateway.
+		 * @return array[]
 		 */
 		public function gateway_settings( $settings ) {
 			$settings['test_secret_key'] = array(
-				'type'      => 'text',
-				'title'     => __( 'Test Secret Key', 'charitable-extension-boilerplate' ),
-				'priority'  => 6,
-				'class'     => 'wide',
+				'type'     => 'text',
+				'title'    => __( 'Test Secret Key', 'charitable-extension-boilerplate' ),
+				'priority' => 6,
+				'class'    => 'wide',
 			);
 
 			$settings['test_public_key'] = array(
-				'type'      => 'text',
-				'title'     => __( 'Test Publishable Key', 'charitable-extension-boilerplate' ),
-				'priority'  => 8,
-				'class'     => 'wide',
+				'type'     => 'text',
+				'title'    => __( 'Test Publishable Key', 'charitable-extension-boilerplate' ),
+				'priority' => 8,
+				'class'    => 'wide',
 			);
 
 			return $settings;
@@ -101,10 +97,10 @@ if ( ! class_exists( 'Charitable_Gateway_Extension_Boilerplate' ) ) :
 		/**
 		 * Register the payment gateway class.
 		 *
-		 * @since   1.0.0
+		 * @since  1.0.0
 		 *
-		 * @param   string[] $gateways The list of registered gateways.
-		 * @return  string[]
+		 * @param  string[] $gateways The list of registered gateways.
+		 * @return string[]
 		 */
 		public static function register_gateway( $gateways ) {
 			$gateways['gateway_id'] = 'Charitable_Gateway_Extension_Boilerplate';
@@ -117,9 +113,9 @@ if ( ! class_exists( 'Charitable_Gateway_Extension_Boilerplate' ) ) :
 		 * This will return the test keys if test mode is enabled. Otherwise, returns
 		 * the production keys.
 		 *
-		 * @since   1.0.0
+		 * @since  1.0.0
 		 *
-		 * @return  string[]
+		 * @return string[]
 		 */
 		public function get_keys() {
 			$keys = array();
@@ -138,11 +134,11 @@ if ( ! class_exists( 'Charitable_Gateway_Extension_Boilerplate' ) ) :
 		/**
 		 * Return the submitted value for a gateway field.
 		 *
-		 * @since   1.0.0
+		 * @since  1.0.0
 		 *
-		 * @param   string  $key    The key of the field to get.
-		 * @param   mixed[] $values Set of values to find the values in.
-		 * @return  string|false
+		 * @param  string  $key    The key of the field to get.
+		 * @param  mixed[] $values Set of values to find the values in.
+		 * @return string|false
 		 */
 		public function get_gateway_value( $key, $values ) {
 			return isset( $values['gateways']['gateway_id'][ $key ] ) ? $values['gateways']['gateway_id'][ $key ] : false;
@@ -151,11 +147,11 @@ if ( ! class_exists( 'Charitable_Gateway_Extension_Boilerplate' ) ) :
 		/**
 		 * Return the submitted value for a gateway field.
 		 *
-		 * @since   1.0.0
+		 * @since  1.0.0
 		 *
-		 * @param   string 						  $key       The key of the field to get.
-		 * @param   Charitable_Donation_Processor $processor Donation processor object.
-		 * @return  string|false
+		 * @param  string                        $key       The key of the field to get.
+		 * @param  Charitable_Donation_Processor $processor Donation processor object.
+		 * @return string|false
 		 */
 		public function get_gateway_value_from_processor( $key, Charitable_Donation_Processor $processor ) {
 			return $this->get_gateway_value( $key, $processor->get_donation_data() );
@@ -164,12 +160,12 @@ if ( ! class_exists( 'Charitable_Gateway_Extension_Boilerplate' ) ) :
 		/**
 		 * Validate the submitted credit card details.
 		 *
-		 * @since   1.0.0
+		 * @since  1.0.0
 		 *
-		 * @param   boolean $valid   Whether the donation is valid.
-		 * @param   string  $gateway The gateway for the donation.
-		 * @param   mixed[] $values  Submitted donation values.
-		 * @return  boolean
+		 * @param  boolean $valid   Whether the donation is valid.
+		 * @param  string  $gateway The gateway for the donation.
+		 * @param  mixed[] $values  Submitted donation values.
+		 * @return boolean
 		 */
 		public static function validate_donation( $valid, $gateway, $values ) {
 			if ( 'gateway_id' != $gateway ) {
@@ -192,15 +188,14 @@ if ( ! class_exists( 'Charitable_Gateway_Extension_Boilerplate' ) ) :
 		/**
 		 * Process the donation with the gateway.
 		 *
-		 * @since   1.0.0
+		 * @since  1.0.0
 		 *
-		 * @param   mixed                         $return      Response to be returned.
-		 * @param   int                           $donation_id The donation ID.
-		 * @param   Charitable_Donation_Processor $processor   Donation processor object.
-		 * @return  boolean|array
+		 * @param  mixed                         $return      Response to be returned.
+		 * @param  int                           $donation_id The donation ID.
+		 * @param  Charitable_Donation_Processor $processor   Donation processor object.
+		 * @return boolean|array
 		 */
 		public static function process_donation( $return, $donation_id, $processor ) {
-
 			$gateway     = new Charitable_Gateway_Extension_Boilerplate();
 
 			$donation    = charitable_get_donation( $donation_id );
@@ -234,7 +229,7 @@ if ( ! class_exists( 'Charitable_Gateway_Extension_Boilerplate' ) ) :
 			// $notify_url = function_exists( 'charitable_get_ipn_url' )
 			// 	? charitable_get_ipn_url( Charitable_Gateway_Sparrow::ID )
 			// 	: Charitable_Donation_Processor::get_instance()->get_ipn_url( Charitable_Gateway_Sparrow::ID );
-			
+
 			// Credit card fields
 			// $cc_expiration = $this->get_gateway_value( 'cc_expiration', $values );
 			// $cc_number     = $this->get_gateway_value( 'cc_number', $values );
@@ -270,9 +265,9 @@ if ( ! class_exists( 'Charitable_Gateway_Extension_Boilerplate' ) ) :
 		/**
 		 * Process an IPN request.
 		 *
-		 * @since   1.0.0
+		 * @since  1.0.0
 		 *
-		 * @return  void
+		 * @return void
 		 */
 		public static function process_ipn() {
 			/**
@@ -280,21 +275,6 @@ if ( ! class_exists( 'Charitable_Gateway_Extension_Boilerplate' ) ) :
 			 *
 			 * @todo
 			 */
-		}
-
-		/**
-		 * Redirect back to the donation form, sending the donation ID back.
-		 *
-		 * @since   1.0.0
-		 *
-		 * @param   int $donation_id The donation ID.
-		 * @return  void
-		 */
-		private function redirect_to_donation_form( $donation_id ) {
-			charitable_get_session()->add_notices();
-			$redirect_url = esc_url( add_query_arg( array( 'donation_id' => $donation_id ), wp_get_referer() ) );
-			wp_safe_redirect( $redirect_url );
-			die();
 		}
 	}
 

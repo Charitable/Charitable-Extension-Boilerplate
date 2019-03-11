@@ -7,7 +7,9 @@
  */
 
 // Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) { exit; }
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * Charitable_Extension_Activation
@@ -25,7 +27,7 @@ class Charitable_Extension_Activation {
 	 *
 	 * @param 	string $plugin_path The absolute path to the plugin's directory.
 	 * @param 	string $plugin_file The absolute path to the main plugin file.
-	 * @return 	void
+	 * @return void
 	 */
 	public function __construct( $plugin_path, $plugin_file ) {
 
@@ -73,7 +75,7 @@ class Charitable_Extension_Activation {
 	 *
 	 * @since   1.0.0
 	 *
-	 * @return 	void
+	 * @return void
 	 */
 	public function run() {
 		add_action( 'admin_notices', array( $this, 'missing_charitable_notice' ) );
@@ -84,7 +86,7 @@ class Charitable_Extension_Activation {
 	 *
 	 * @since 	1.0.0
 	 *
-	 * @return 	void
+	 * @return void
 	 */
 	public function missing_charitable_notice() {
 		if ( $this->has_charitable ) {

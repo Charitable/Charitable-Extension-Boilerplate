@@ -6,20 +6,22 @@
  *
  * @package     Charitable Extension Boilerplate
  * @subpackage  Charitable Extension Boilerplate/Upgrade
- * @copyright   Copyright (c) 2017, Eric Daams
+ * @copyright   Copyright (c) 2019, Eric Daams
  * @license     http://opensource.org/licenses/gpl-1.0.0.php GNU Public License
  * @since       1.0.0
  */
 
 // Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) { exit; }
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 if ( ! class_exists( 'Charitable_Extension_Boilerplate_Upgrade' ) ) :
 
 	/**
 	 * Charitable_Extension_Boilerplate_Upgrade
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	class Charitable_Extension_Boilerplate_Upgrade extends Charitable_Upgrade {
 
