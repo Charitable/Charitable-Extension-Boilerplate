@@ -1,13 +1,19 @@
 {
   "name": "charitable-extension-boilerplate",
   "version": "2.0.0",
+  "license": "GPL-2.0-or-later",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Charitable/Charitable-Extension-Boilerplate"
+  },
   "devDependencies": {
     "grunt": "^1.0.3",
     "grunt-contrib-clean": "^2.0.0",
     "grunt-contrib-copy": "^1.0.0",
-    "grunt-contrib-rename": "0.2.0",
+    "grunt-contrib-rename": "^0.2.0",
     "grunt-replace": "^1.0.1",
     "load-grunt-tasks": "^4.0.0",
+    "lodash": "^4.17.11",
     "matchdep": "^2.0.0"
   }
 }
